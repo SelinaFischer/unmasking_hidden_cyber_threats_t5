@@ -14,7 +14,7 @@ import numpy as np
 import io
 
 # Page config
-st.set_page_config(page_title="Unmasking Hidden Cyber Threats", layout="wide")
+    st.set_page_config(page_title="Unmasking Hidden Cyber Threats", layout="wide")
 
 # Theme toggle
 theme_mode = st.sidebar.selectbox("🌓 Select Theme Mode", ["Light", "Dark"])
@@ -29,7 +29,7 @@ if theme_mode == "Light":
         "plot_bg": "white",
         "grid": "#e1e5eb"
     }
-else:
+    else:
     custom_theme = {
         "primary": "#FF4B4B",
         "bg": "#0e1117",
@@ -39,7 +39,7 @@ else:
         "grid": "#444"
     }
 
-st.markdown(f"""
+    st.markdown(f"""
     <style>
     .stApp {{
         background-color: {custom_theme['bg']};
@@ -55,8 +55,8 @@ st.markdown(f"""
 # Load and merge datasets
 @st.cache_data
 def load_data():
-    df_train = pd.read_csv("../data/cleaned/cleaned_train.csv")
-    df_test = pd.read_csv("../data/cleaned/cleaned_test.csv")
+    df_train = pd.read_csv("data/cleaned/cleaned_train.csv")
+    df_test = pd.read_csv("data/cleaned/cleaned_test.csv")
     df_train["source"] = "Train"
     df_test["source"] = "Test"
     df_all = pd.concat([df_train, df_test], ignore_index=True)
@@ -68,22 +68,45 @@ df = load_data()
 dataset_filter = st.sidebar.radio("📁 Select Dataset", options=["Train", "Test", "Both"])
 if dataset_filter != "Both":
     df_filtered = df[df["source"] == dataset_filter]
-else:
+    else:
     df_filtered = df.copy()
 
 # Sidebar Filters
 protocol_filter = st.sidebar.multiselect("Protocol Type", df_filtered["protocol_type"].unique(), df_filtered["protocol_type"].unique())
 flag_filter = st.sidebar.multiselect("Flag", df_filtered["flag"].unique(), df_filtered["flag"].unique())
+    st.sidebar.caption("Use filters to explore subsets of the dataset. Charts will update based on your selection.")
 df_filtered = df_filtered[df_filtered["protocol_type"].isin(protocol_filter) & df_filtered["flag"].isin(flag_filter)]
+if df_filtered.empty:
+    st.warning("No data matches the selected filters. Please broaden your selections.")
 
 # Tabs
-tab0, tab1, tab2, tab3, tab4 = st.tabs(["📘 Project Overview", "📊 Overview", "📉 Traffic Visuals", "📈 Statistical Insights", "🤖 Model & Prediction"])
+tab0, tab1, tab2, tab3, tab4 = st.tabs(["Project Overview", "Overview", "Traffic Visuals", "Statistical Insights", "Model & Prediction"])
 
 
 with tab0:
     st.title("📘 Unmasking Hidden Cyber Threats")
 
-    with st.expander("📖 Click to read full project introduction and objectives"):
+    
+    st.markdown(
+    """
+    <style>
+    summary {
+        font-size: 1.1rem;
+        font-weight: 600;
+        background-color: #e3f2fd;
+        padding: 8px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    details[open] summary {
+        background-color: #c8e6c9;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+with st.expander("Click to read full project introduction and objectives"):
         st.markdown("""
 Cybersecurity has become one of the most critical challenges for modern organisations. As businesses grow more reliant on digital infrastructure, cyberattacks have escalated in scale, sophistication, and impact.
 
@@ -119,7 +142,7 @@ This interactive Streamlit dashboard empowers security analysts with tools to de
 
 # --- Tab 1: Overview ---
 with tab1:
-    st.header("📊 Overview")
+    st.header("Overview")
     col1, col2 = st.columns(2)
     normal_count = df_filtered[df_filtered["class"] == "normal"].shape[0]
     anomaly_count = df_filtered[df_filtered["class"] == "anomaly"].shape[0]
@@ -136,19 +159,23 @@ with tab2:
     st.header("📉 Traffic Visual Comparison")
     col3, col4 = st.columns(2)
     with col3:
-        fig1, ax1 = plt.subplots()
-        sns.boxplot(data=df_filtered, x="class", y="src_bytes", ax=ax1)
-        ax1.set_facecolor(custom_theme["plot_bg"])
-        ax1.set_title("src_bytes by Class", color=custom_theme["text"])
-        ax1.tick_params(colors=custom_theme["text"])
-        st.pyplot(fig1)
+        
+    if df_filtered["class"].nunique() > 1:
+    fig1 = px.box(df_filtered, x="class", y="src_bytes", title="src_bytes by Class")
+    fig1.update_layout(paper_bgcolor=custom_theme["plot_bg"], font_color=custom_theme["text"])
+    st.plotly_chart(fig1, use_container_width=True)
+    else:
+    st.warning("Not enough class types to draw boxplot for 'src_bytes'. Please select a broader filter.")
+
     with col4:
-        fig2, ax2 = plt.subplots()
-        sns.boxplot(data=df_filtered, x="class", y="duration", ax=ax2)
-        ax2.set_facecolor(custom_theme["plot_bg"])
-        ax2.set_title("Duration by Class", color=custom_theme["text"])
-        ax2.tick_params(colors=custom_theme["text"])
-        st.pyplot(fig2)
+        
+    if df_filtered["class"].nunique() > 1:
+    fig2 = px.box(df_filtered, x="class", y="duration", title="Duration by Class")
+    fig2.update_layout(paper_bgcolor=custom_theme["plot_bg"], font_color=custom_theme["text"])
+    st.plotly_chart(fig2, use_container_width=True)
+    else:
+    st.warning("Not enough class types to draw boxplot for 'duration'. Please select a broader filter.")
+
 
     st.subheader(" Top Services by Anomalous Traffic")
     top_services = df_filtered.groupby(['service', 'class']).size().unstack().fillna(0)
@@ -198,10 +225,10 @@ with tab4:
     clf.fit(X_train, y_train)
     y_pred = clf.predict(X_val)
 
-    st.subheader("📋 Classification Report")
+    st.subheader("Classification Report")
     st.text(classification_report(y_val, y_pred))
 
-    st.subheader("🧩 Confusion Matrix")
+    st.subheader("Confusion Matrix")
     fig_cm, ax_cm = plt.subplots()
     sns.heatmap(confusion_matrix(y_val, y_pred), annot=True, fmt='d', cmap='Blues', 
                 xticklabels=["Normal", "Anomaly"], yticklabels=["Normal", "Anomaly"])
@@ -210,7 +237,7 @@ with tab4:
     st.pyplot(fig_cm)
 
     # Prediction on full test set
-    st.subheader("⬇️ Downloadable Predictions")
+    st.subheader("Downloadable Predictions")
     df_test_input, _ = preprocess(df[df["source"] == "Test"])
     X_test = df_test_input.drop("class", axis=1)
     test_preds = clf.predict(X_test)

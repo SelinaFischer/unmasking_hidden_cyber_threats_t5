@@ -407,8 +407,25 @@ By unmasking these subtle but critical indicators, our project brings organisati
 
 <br>
 
+---
+
 ### Reflection
 
+## ✨ Reflection
+
+This project marks the final milestone of our 4-month **Data Analytics & AI Bootcamp**  a journey that has been both intense and transformative. Over the course of the programme, we immersed ourselves in practical learning through **three Hackathons** and a **Capstone project**, applying new concepts in real-world scenarios under tight deadlines.
+
+When we signed up for this course, our goal was clear: to challenge ourselves, learn something new, and gain hands-on skills that we could confidently use in professional settings. We’re proud to say that we’ve achieved that goal. Across all four projects, we demonstrated a strong ability to turn complex data problems into actionable insights with clarity, technical rigor, and purpose.
+
+For this final Hackathon, we named our team **Cyber Ninja**  a name that reflects our mindset as data professionals. Like ninjas, we aimed to be sharp, focused, and quietly effective. And just as ninjas are trained to adapt and overcome in high-pressure situations, we were ready to face any challenge head-on in the world of cybersecurity and analytics.
+
+That mindset was tested when, despite being a group of four, only two of us actively contributed to the delivery. While it was disappointing to lack full team participation, it became a powerful moment for us to demonstrate professionalism and commitment.
+
+We adapted quickly, redistributed the workload, and stayed focused on quality  delivering the full scope of a four-person project in just three days, with two dedicated team members. We are proud of how we handled the situation: with resilience, ownership, and a drive to deliver the best possible outcome under pressure.
+
+This experience reinforced the importance of accountability, adaptability, and collaboration — skills that are just as essential as technical expertise in the data field. As we close this chapter, we do so with pride, knowing we’ve pushed ourselves, grown tremendously, and produced work we stand behind.
+
+This bootcamp has not only equipped us with new tools and techniques, it has built the confidence and mindset to continue learning, solving problems, and delivering value as future data professionals.
 
 
 

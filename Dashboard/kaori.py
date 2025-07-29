@@ -22,7 +22,7 @@ feature_cols = ['count', 'serror_rate', 'srv_serror_rate',
 st.set_page_config(page_title="Cyber Threat Visual Dashboard", layout="wide")
 st.title("🔍 Cyber Threat Detection Dashboard")
 
-tab1, tab2, tab3 = st.tabs(["📊 Radar Chart", "📈 Feature Importance", "📦 Service Breakdown"])
+tab1, tab2, tab3 = st.tabs(["📊 Distribution of Features", "📈 Feature Importance", "📦 Service Breakdown"])
 
 # -- 1. Distribution of Features by Class --
 

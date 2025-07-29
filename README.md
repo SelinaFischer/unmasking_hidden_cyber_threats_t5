@@ -279,6 +279,132 @@ Each method was selected to ensure our findings were statistically valid, explai
 - Communicated uncertainty and ensured interpretability  
  
 
+### Findings, Recommendations and Conclusion
+
+
+In this project, the term **class** refers to the label assigned to each network connection in the dataset:
+- **Normal**: Legitimate, benign activity  
+- **Anomaly**: Suspicious or malicious behaviour (e.g. scanning, probing, denial-of-service)
+
+These class labels are the foundation for our entire analysis. By comparing how key features behave across these two classes, we sought to identify reliable indicators of cyber threats and inform detection strategies.
+
+
+###  What Did We Find?
+
+We began with a simple question:  
+**Can patterns in network behaviour reveal early signs of a cyberattack?**
+
+To answer this, we formulated hypotheses, validated them with statistical tests, and interpreted the results using visuals and correlations. Here's what we uncovered:
+
+
+###  Hypothesis 1:  
+
+**“Malicious traffic has significantly higher `src_bytes` than normal traffic.”**  
+- **Result**: ❌ **Rejected**  
+- **What we saw**: Many malicious records had **very low source bytes**, contradicting the assumption that attackers always send more data.  
+- **Impact**: `src_bytes` is not a strong standalone signal for identifying threats.
+
+
+### Hypothesis 2:  
+**“Certain service types are more vulnerable to cyberattacks.”**  
+- **Result**: ✔️ **Accepted**  
+- **What we saw**: Services like **‘private’**, **‘eco_i’**, and **‘ecr_i’** were disproportionately associated with anomalies.  
+- **Impact**: Service type can be used as a risk factor — security systems should flag high-risk services for closer inspection.
+
+
+### Hypothesis 3:  
+**“Malicious connections tend to have shorter durations than normal ones.”**  
+- **Result**: ✔️ **Accepted**  
+- **What we saw**: Using T-tests and Mann-Whitney U tests on log-transformed data, we confirmed that anomalies often involve **brief, rapid-fire connections** consistent with scans and probes.  
+- **Impact**: Duration thresholds can help detect suspicious behaviour early.
+
+
+
+###  Correlation Insights  
+Beyond the hypotheses, we examined feature correlations with `class` labels. Some features stood out:
+
+| 🔝 Strong Positive Correlations (linked to anomalies) | 🔽 Strong Negative Correlations (linked to normal) |
+|--------------------------------------------------------|----------------------------------------------------|
+| `dst_host_srv_serror_rate` (0.65)                      | `same_srv_rate` (–0.75)                           |
+| `serror_rate`, `srv_serror_rate` (≈ 0.65)              | `logged_in` (–0.69)                               |
+| `count` (0.58)                                         | `dst_host_same_srv_rate` (–0.69)                  |
+
+- **Visuals confirmed**: Error rates for anomalies spike toward 1.0, while normal traffic stays near 0.  
+- **Takeaway**: Repeated failed connections and service errors are red flags.
+
+
+
+###  Top 5 High-Risk Services
+
+Based on frequency and anomaly ratios, the following **five services** were found to have a **100% anomaly rate** — meaning **every single connection** using these services was flagged as **malicious**.
+
+These services represent the highest-risk categories in the dataset and should be treated as strong indicators of cyber threats in any network monitoring system.
+
+| Service Name | Description                                         |
+|--------------|----------------------------------------------------------------------------|
+| `nnsp`       | Network News Server Protocol (obsolete Usenet-related service)            |
+| `supdup`     | Obsolete remote terminal protocol                                         |
+| `uucp`       | Unix-to-Unix Copy Protocol — legacy file transfer method                  |
+| `uucp_path`  | Variation of UUCP path (legacy Unix routing path)                         |
+| `vmnet`      | Virtual machine network interface protocol (may indicate virtualised probes or testing tools) |
+
+
+### Interpretation:
+- These services are mostly **legacy, obscure, or virtualised protocols** that are **not commonly used in modern production environments**.
+- Their presence could suggest:
+  - Misconfigured or unmonitored legacy systems
+  - Virtualised environments running attack simulations
+  - Vulnerability scanners or exploit frameworks mimicking outdated service behaviour
+
+They are strong candidates for **automatic alerting or high-severity flagging** in real-time intrusion detection systems.
+
+
+
+###  Recommendations
+
+1. **Use High-Impact Features for Detection**
+   - Prioritise `serror_rate`, `srv_serror_rate`, and `count` in both ML models and rule-based systems.
+   - Drop low-value features (e.g. `urgent`, `num_file_creations`) to streamline performance.
+
+2. **Monitor High-Risk Services**
+   - Set alerts for traffic targeting high-risk services (`private`, `eco_i`), even if other features look benign.
+
+3. **Deploy Duration-Based Rules**
+   - Use short duration + high error rate as a compound indicator of scanning or DoS attempts.
+
+4. **Set Thresholds for Real-Time Alerts**
+   - Trigger alerts when:
+     - `serror_rate > 0.9`
+     - `dst_host_srv_serror_rate > 0.9`
+
+5. **Guide Model Building with Evidence**
+   - Use correlation analysis to inform feature selection in anomaly detection models.
+   - Validate model assumptions with exploratory data testing just as we did in this project.
+
+
+###  Conclusion
+
+This project set out to uncover hidden patterns behind cyberattacks  and delivered actionable, explainable insights.
+
+Through a structured process of hypothesis testing, statistical validation, and visual exploration, we found that **short durations, specific service types, and spiked error rates** are the strongest behavioural signatures of malicious activity.
+
+Not all assumptions were confirmed (e.g. `src_bytes`), but that’s the power of data.  It helps challenge intuition with evidence.
+
+These findings can directly support:
+- **Smarter rule-based detection** in security tools  
+- **Feature engineering** for machine learning models  
+- **Early-warning alerts** to prevent damage from undetected intrusions
+
+By unmasking these subtle but critical indicators, our project brings organisations one step closer to proactive, data-driven cybersecurity.
+
+
+
+
+### Reflection
+
+
+
+
 
 ---
 ### Dashboard Design
@@ -328,3 +454,59 @@ Each method was selected to ensure our findings were statistically valid, explai
 
 ### Acknowledgements
 * Thank the people who provided support through this project.
+
+
+
+---
+
+##  Glossary of Feature Names
+
+This table explains the technical features and service labels found in the dataset. It is intended to help readers without a cybersecurity background understand the meaning behind each variable.
+
+###  Key Technical Features
+
+| Feature Name                  | Description                                                                                   |
+|------------------------------|-----------------------------------------------------------------------------------------------|
+| `duration`                   | Length of the network connection (in seconds)                                                 |
+| `protocol_type`              | Network protocol used (e.g. `tcp`, `udp`, `icmp`)                                             |
+| `service`                    | Network service on the destination port (e.g. `http`, `ftp`, `private`)                       |
+| `flag`                       | Status of the connection based on TCP handshake outcomes                                      |
+| `src_bytes`                  | Number of data bytes sent from source to destination                                          |
+| `dst_bytes`                  | Number of data bytes sent from destination to source                                          |
+| `land`                       | Boolean indicating if source and destination IP/port are the same (`1` = yes)                 |
+| `wrong_fragment`             | Number of incorrect packet fragments                                                          |
+| `urgent`                     | Number of urgent packets (typically used in TCP attacks)                                      |
+| `hot`                        | Number of suspicious activities such as key file access                                       |
+| `num_failed_logins`          | Number of failed login attempts                                                               |
+| `logged_in`                  | User successfully logged in (`1` = yes, `0` = no)                                             |
+| `num_compromised`            | Number of compromised conditions                                                             |
+| `root_shell`                 | Whether root shell was obtained                                                              |
+| `su_attempted`               | Attempts to use the `su` command                                                              |
+| `num_root`                   | Number of root accesses                                                                       |
+| `num_file_creations`        | Number of file creation operations                                                            |
+| `num_shells`                 | Number of shell prompts invoked                                                              |
+| `num_access_files`           | Number of attempts to access control files                                                   |
+| `is_guest_login`             | Indicates if the login was a guest session (`1` = guest)                                      |
+| `count`                      | Number of connections to the same host in the past 2 seconds                                 |
+| `srv_count`                  | Number of connections to the same service in the past 2 seconds                              |
+| `serror_rate`                | % of connections with SYN errors (failed connection attempts)                                |
+| `srv_serror_rate`            | % of connections to the same service with SYN errors                                         |
+| `rerror_rate`                | % of connections with REJ (reject) errors                                                    |
+| `srv_rerror_rate`            | % of connections to the same service with REJ errors                                         |
+| `same_srv_rate`              | % of connections to the same service                                                         |
+| `diff_srv_rate`              | % of connections to different services                                                       |
+| `srv_diff_host_rate`         | % of connections to different hosts using the same service                                   |
+| `dst_host_count`             | Number of connections to the destination host                                                |
+| `dst_host_srv_count`         | Number of connections to the same service on the destination host                            |
+| `dst_host_same_srv_rate`     | % of connections to the same service on the same host                                        |
+| `dst_host_diff_srv_rate`     | % of connections to different services on the same host                                      |
+| `dst_host_same_src_port_rate`| % of connections from the same source port                                                   |
+| `dst_host_srv_diff_host_rate`| % of connections to the same service but different hosts                                     |
+| `dst_host_serror_rate`       | % of connections to the host that had SYN errors                                             |
+| `dst_host_srv_serror_rate`   | % of same-service connections to the host that had SYN errors                                |
+| `dst_host_rerror_rate`       | % of connections to the host that had REJ errors                                             |
+| `dst_host_srv_rerror_rate`   | % of same-service connections to the host that had REJ errors                                |
+| `log_src_bytes`              | Log-transformed value of `src_bytes` to normalize skewed data                                |
+| `class`                      | Connection label: `normal` = legitimate, `anomaly` = malicious                               |
+
+

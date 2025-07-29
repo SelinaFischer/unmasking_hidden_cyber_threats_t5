@@ -14,7 +14,7 @@ import numpy as np
 import io
 
 # Page config
-st.set_page_config(page_title="Network Intrusion Detection", layout="wide")
+st.set_page_config(page_title="Unmasking Hidden Cyber Threats", layout="wide")
 
 # Theme toggle
 theme_mode = st.sidebar.selectbox("🌓 Select Theme Mode", ["Light", "Dark"])
@@ -55,8 +55,8 @@ st.markdown(f"""
 # Load and merge datasets
 @st.cache_data
 def load_data():
-    df_train = pd.read_csv("cleaned_train.csv")
-    df_test = pd.read_csv("cleaned_test.csv")
+    df_train = pd.read_csv("../data/cleaned/cleaned_train.csv")
+    df_test = pd.read_csv("../data/cleaned/cleaned_test.csv")
     df_train["source"] = "Train"
     df_test["source"] = "Test"
     df_all = pd.concat([df_train, df_test], ignore_index=True)
@@ -150,7 +150,7 @@ with tab2:
         ax2.tick_params(colors=custom_theme["text"])
         st.pyplot(fig2)
 
-    st.subheader("🛠️ Top Services by Anomalous Traffic")
+    st.subheader(" Top Services by Anomalous Traffic")
     top_services = df_filtered.groupby(['service', 'class']).size().unstack().fillna(0)
     fig3 = top_services.sort_values(by='anomaly', ascending=False).head(10).plot(kind='bar', stacked=True, figsize=(10, 5))
     plt.title("Top 10 Services by Class")
@@ -158,7 +158,7 @@ with tab2:
     plt.ylabel("Count")
     st.pyplot(plt.gcf())
 
-    st.subheader("🧠 Correlation Heatmap")
+    st.subheader(" Correlation Heatmap")
     fig4, ax4 = plt.subplots(figsize=(12, 6))
     numeric_cols = df_filtered.select_dtypes(include='number')
     sns.heatmap(numeric_cols.corr(), cmap='coolwarm', center=0, ax=ax4)

@@ -297,6 +297,8 @@ We began with a simple question:
 To answer this, we formulated hypotheses, validated them with statistical tests, and interpreted the results using visuals and correlations. Here's what we uncovered:
 
 
+---
+
 ###  Hypothesis 1:  
 
 **“Malicious traffic has significantly higher `src_bytes` than normal traffic.”**  
@@ -305,6 +307,8 @@ To answer this, we formulated hypotheses, validated them with statistical tests,
 - **Impact**: `src_bytes` is not a strong standalone signal for identifying threats.
 
 
+---
+
 ### Hypothesis 2:  
 **“Certain service types are more vulnerable to cyberattacks.”**  
 - **Result**: ✔️ **Accepted**  
@@ -312,13 +316,15 @@ To answer this, we formulated hypotheses, validated them with statistical tests,
 - **Impact**: Service type can be used as a risk factor — security systems should flag high-risk services for closer inspection.
 
 
+---
+
 ### Hypothesis 3:  
 **“Malicious connections tend to have shorter durations than normal ones.”**  
 - **Result**: ✔️ **Accepted**  
 - **What we saw**: Using T-tests and Mann-Whitney U tests on log-transformed data, we confirmed that anomalies often involve **brief, rapid-fire connections** consistent with scans and probes.  
 - **Impact**: Duration thresholds can help detect suspicious behaviour early.
 
-
+---
 
 ###  Correlation Insights  
 Beyond the hypotheses, we examined feature correlations with `class` labels. Some features stood out:
@@ -399,13 +405,14 @@ By unmasking these subtle but critical indicators, our project brings organisati
 
 
 
+<br>
 
 ### Reflection
 
 
 
 
-
+<br>
 ---
 ### Dashboard Design
 * List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.

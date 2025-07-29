@@ -279,6 +279,108 @@ Each method was selected to ensure our findings were statistically valid, explai
 - Communicated uncertainty and ensured interpretability  
  
 
+### Findings, Recommendations and Conclusion
+
+
+In this project, the term **class** refers to the label assigned to each network connection in the dataset:
+- **Normal**: Legitimate, benign activity  
+- **Anomaly**: Suspicious or malicious behaviour (e.g. scanning, probing, denial-of-service)
+
+These class labels are the foundation for our entire analysis. By comparing how key features behave across these two classes, we sought to identify reliable indicators of cyber threats and inform detection strategies.
+
+
+###  What Did We Find?
+
+We began with a simple question:  
+**Can patterns in network behaviour reveal early signs of a cyberattack?**
+
+To answer this, we formulated hypotheses, validated them with statistical tests, and interpreted the results using visuals and correlations. Here's what we uncovered:
+
+
+####  Hypothesis 1:  
+
+**“Malicious traffic has significantly higher `src_bytes` than normal traffic.”**  
+- **Result**: ❌ **Rejected**  
+- **What we saw**: Many malicious records had **very low source bytes**, contradicting the assumption that attackers always send more data.  
+- **Impact**: `src_bytes` is not a strong standalone signal for identifying threats.
+
+
+
+#### Hypothesis 2:  
+**“Certain service types are more vulnerable to cyberattacks.”**  
+- **Result**: ✔️ **Accepted**  
+- **What we saw**: Services like **‘private’**, **‘eco_i’**, and **‘ecr_i’** were disproportionately associated with anomalies.  
+- **Impact**: Service type can be used as a risk factor — security systems should flag high-risk services for closer inspection.
+
+
+
+#### Hypothesis 3:  
+**“Malicious connections tend to have shorter durations than normal ones.”**  
+- **Result**: ✔️ **Accepted**  
+- **What we saw**: Using T-tests and Mann-Whitney U tests on log-transformed data, we confirmed that anomalies often involve **brief, rapid-fire connections** consistent with scans and probes.  
+- **Impact**: Duration thresholds can help detect suspicious behaviour early.
+
+
+
+####  Correlation Insights  
+Beyond the hypotheses, we examined feature correlations with `class` labels. Some features stood out:
+
+| 🔝 Strong Positive Correlations (linked to anomalies) | 🔽 Strong Negative Correlations (linked to normal) |
+|--------------------------------------------------------|----------------------------------------------------|
+| `dst_host_srv_serror_rate` (0.65)                      | `same_srv_rate` (–0.75)                           |
+| `serror_rate`, `srv_serror_rate` (≈ 0.65)              | `logged_in` (–0.69)                               |
+| `count` (0.58)                                         | `dst_host_same_srv_rate` (–0.69)                  |
+
+- **Visuals confirmed**: Error rates for anomalies spike toward 1.0, while normal traffic stays near 0.  
+- **Takeaway**: Repeated failed connections and service errors are red flags.
+
+
+
+###  Recommendations
+
+1. **Use High-Impact Features for Detection**
+   - Prioritise `serror_rate`, `srv_serror_rate`, and `count` in both ML models and rule-based systems.
+   - Drop low-value features (e.g. `urgent`, `num_file_creations`) to streamline performance.
+
+2. **Monitor High-Risk Services**
+   - Set alerts for traffic targeting high-risk services (`private`, `eco_i`), even if other features look benign.
+
+3. **Deploy Duration-Based Rules**
+   - Use short duration + high error rate as a compound indicator of scanning or DoS attempts.
+
+4. **Set Thresholds for Real-Time Alerts**
+   - Trigger alerts when:
+     - `serror_rate > 0.9`
+     - `dst_host_srv_serror_rate > 0.9`
+
+5. **Guide Model Building with Evidence**
+   - Use correlation analysis to inform feature selection in anomaly detection models.
+   - Validate model assumptions with exploratory data testing just as we did in this project.
+
+
+
+###  Conclusion
+
+This project set out to uncover hidden patterns behind cyberattacks  and delivered actionable, explainable insights.
+
+Through a structured process of hypothesis testing, statistical validation, and visual exploration, we found that **short durations, specific service types, and spiked error rates** are the strongest behavioural signatures of malicious activity.
+
+Not all assumptions were confirmed (e.g. `src_bytes`), but that’s the power of data.  It helps challenge intuition with evidence.
+
+These findings can directly support:
+- **Smarter rule-based detection** in security tools  
+- **Feature engineering** for machine learning models  
+- **Early-warning alerts** to prevent damage from undetected intrusions
+
+By unmasking these subtle but critical indicators, our project brings organisations one step closer to proactive, data-driven cybersecurity.
+
+
+
+### Reflection
+
+
+
+
 
 ---
 ### Dashboard Design

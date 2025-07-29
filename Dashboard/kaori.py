@@ -19,6 +19,9 @@ selected_feature = st.sidebar.selectbox("Select a feature to visualize", feature
 class_filter = st.sidebar.multiselect("Filter by Class", df['class'].unique(), default=df['class'].unique())
 
 
+
+
+#  Add a Feature Importance Section
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -43,6 +46,21 @@ importances = rf.feature_importances_
 feature_importance_df = pd.DataFrame({'Feature': X.columns, 'Importance': importances})
 feature_importance_df = feature_importance_df.sort_values(by='Importance', ascending=False).head(5)
 
+
+# Display KIP card 
+st.markdown("## 📌 Top 5 Features Predicting Abnormal Activity")
+
+# Get the top 5 features (or fewer if not enough)
+num_kpis = min(5, len(feature_importance_df))  
+top_features = feature_importance_df.head(num_kpis)
+
+
+# Create the correct number of columns
+kpi_cols = st.columns(num_kpis)
+
+for i in range(num_kpis):
+    row = feature_importance_df.iloc[i]
+    kpi_cols[i].metric(label=row['Feature'], value=f"{row['Importance']:.3f}")
 
 
 

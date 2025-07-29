@@ -70,7 +70,7 @@
 * Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
 
 
-## Credits 
+s## Credits 
 
 * In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
 * You can break the credits section up into Content and Media, depending on what you have included in your project. 

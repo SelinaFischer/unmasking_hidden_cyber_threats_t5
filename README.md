@@ -76,9 +76,9 @@ This structure supports both:
 
 ### Hypothesis and how to validate?
 
-## Hypothesis Validation
+#### Hypothesis Validation
 
-### Objectives
+#### Objectives
 
 The objective of hypothesis validation in this project is to apply statistical testing to uncover meaningful behavioural differences between normal and malicious network traffic. This helps identify patterns that could improve early threat detection and support cybersecurity decision-making.
 
@@ -174,46 +174,131 @@ Both statistical tests confirm that malicious connections tend to be shorter. Bo
 
 
 
-
-
-
-
-
 ## Project Plan
 * Outline the high-level steps taken for the analysis.
 * How was the data managed throughout the collection, processing, analysis and interpretation steps?
 * Why did you choose the research methodologies you used?
 
-## The rationale to map the business requirements to the Data Visualisations
-* List your business requirements and a rationale to map them to the Data Visualisations
+## Project Plan
 
-## Analysis techniques used
-* List the data analysis methods used and explain limitations or alternative approaches.
-* How did you structure the data analysis techniques. Justify your response.
-* Did the data limit you, and did you use an alternative approach to meet these challenges?
-* How did you use generative AI tools to help with ideation, design thinking and code optimisation?
+This project followed a structured, collaborative 4-day plan to investigate hidden patterns in network traffic data and build an interactive dashboard that supports cybersecurity insights. Below is a summary of our approach, data management process, and methodology choices.
 
-## Ethical considerations
-* Were there any data privacy, bias or fairness issues with the data?
-* How did you overcome any legal or societal issues?
 
-## Dashboard Design
+### High-Level Steps
+
+| **Day**   | **Focus Area**                         | **Key Activities**                                                                                                                                       | **Owner(s)**                          |
+|-----------|----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
+| Day 1     | Problem Framing & Data Prep            | - Defined project objectives and key hypotheses <br> - Assigned team roles <br> - Reviewed and cleaned train/test datasets <br> - Performed initial exploratory data analysis (EDA) and profiling <br> - Set up GitHub repo and Kanban board | Member 1 (Project Management, Repo Setup) <br> Member 2 (ETL, EDA) |
+| Day 2     | Analysis & Hypothesis Testing          | - Conducted descriptive statistics <br> - Ran statistical tests (Mann-Whitney U, Chi-square, and T-test) <br> - Explored patterns in service types, durations, and feature distributions <br> - Initiated Tableau dashboard layout and visual planning | Member 2 (Stats, Visual Exploration, Dashboard Wireframes) <br> Member 1 (Documentation, Coordination) |
+| Day 3     | Predictive Modelling & Dashboard Build | - Built a binary classification model to detect anomalies <br> - Evaluated model using accuracy, precision, recall, and ROC metrics <br> - Implemented Tableau dashboard with filters and interactivity <br> - Summarised findings and insights | Member 2 (Modelling, Dashboard Build) <br> Member 1 (Documentation, QA) |
+| Day 4     | Final Touch & Presentation             | - Polished dashboard visuals and added KPI cards <br> - Drafted business recommendations <br> - Prepared and rehearsed final presentation <br> - Completed README and mapped learning outcomes | Member 1 & Member 2 (Joint effort) |
+
+
+
+### Data Management Process
+
+Throughout the project, data was handled carefully at each stage:
+
+- **Collection**: We used the publicly available Network Intrusion Detection dataset from Kaggle, which includes over 48,000 TCP/IP connection records across training and test sets.
+- **Processing**: We cleaned the dataset by removing duplicates, converting categorical features, handling imbalanced classes, and applying log transformations where needed.
+- **Analysis**: Initial EDA helped identify feature distributions and outliers. We then performed statistical testing to validate hypotheses about malicious versus normal traffic behaviour.
+- **Interpretation**: Insights were first explored in visual sketches, then fully implemented through Tableau with dynamic filters. Key takeaways were documented in the final report and dashboard storytelling.
+
+
+### Methodology Rationale
+
+We selected the following methodologies for analytical robustness and practical applicability:
+
+- **Descriptive Statistics**: Provided a foundational understanding of the dataset and guided further analysis.
+- **Mann-Whitney U Test**: Chosen due to non-normal distribution of continuous features like `duration` and `src_bytes`.
+- **Chi-square Test**: Used to detect associations between categorical features (e.g., service types) and attack presence.
+- **T-test with log-transformation**: Applied where features showed skewness but approximate normality after transformation.
+- **Predictive Modelling**: A binary classifier was used to simulate anomaly detection based on statistically significant features, supporting actionable recommendations for security teams.
+- **Dashboarding with Streamlit**: Provided an accessible, browser-based interface to explore traffic behaviour and test hypotheses interactively. Streamlit allowed us to integrate statistical summaries, filters, and visualisations into a single application that supports both technical and non-technical users.
+
+Each method was selected to ensure our findings were statistically valid, explainable to stakeholders, and suitable for supporting early threat detection use cases.
+
+
+
+### Workflow &  Analysis techniques used
+
+#### Data Collection & Cleaning
+- Imported and cleaned the raw train/test CSV files.
+- Ensured column consistency, handled missing values, and normalised key fields.
+
+#### Feature Engineering
+- Created new fields (e.g. log-transformed metrics).
+- Grouped high-cardinality categories.
+- Prepared the dataset for both statistical testing and model input.
+
+#### Exploratory Analysis
+- Used descriptive statistics and visualisation to understand distributions.
+- Detected anomalies and guided hypothesis formation.
+
+#### Hypothesis Validation
+- Applied statistical tests (Mann-Whitney U, T-test, Chi-square).
+- Validated key behavioural assumptions about malicious vs normal traffic.
+
+#### Dashboard Design and Interactivity
+- Designed a multi-tab **Streamlit** dashboard with filters and layered visualisations.
+- Enabled users to explore threat patterns and trends interactively.
+
+#### AI Integration & Support
+- Used generative AI (e.g. ChatGPT) for rapid prototyping, coding assistance, debugging, refining storytelling components and image creation.
+
+#### Documentation and Reflection
+- Recorded key decisions, challenges, and lessons learned throughout the project.
+- Used GitHub for version control and project Kanban Board for task management.
+
+#### Final Presentation
+- Delivered a walkthrough presentation covering insights, methodology, and dashboard demo.
+- Supported the presentation with summary visuals and interpreted findings.
+
+
+
+
+### Rationale to Map Business Requirements to Visualisations
+
+| **Business Requirement**      | **Mapped Visualisation Feature**                                                               |
+|------------------------------|-------------------------------------------------------------------------------------------------|
+| Identify anomalies           | Boxplots and violin plots comparing `duration` and `src_bytes` across traffic classes           |
+| Compare network features     | Violin plots and distribution plots for continuous variables to highlight spread and skewness   |
+| Spot vulnerable services     | Bar chart: `service` vs `class` (normal vs malicious)                                           |
+| Support pattern recognition  | Heatmap showing correlation between numerical features                                          |
+| Segment by protocol          | Sidebar filters for `protocol_type`, `flag`, and `service` to enable interactive segmentation   |
+
+
+
+### Limitations
+
+- No timestamps – time-based trends unavailable  
+- High cardinality in `service` column – grouped infrequent categories  
+
+
+
+### Ethical Considerations
+
+- Dataset is synthetic with no personal data  
+- Considered implications of false positives and detection risk  
+- Addressed potential bias in service-type association  
+- Communicated uncertainty and ensured interpretability  
+ 
+
+
+---
+### Dashboard Design
 * List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
 * Later, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but subsequently you used another plot type).
 * How were data insights communicated to technical and non-technical audiences?
 * Explain how the dashboard was designed to communicate complex data insights to different audiences. 
 
-## Unfixed Bugs
-* Please mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a significant variable to consider, paucity of time and difficulty understanding implementation are not valid reasons to leave bugs unfixed.
-* Did you recognise gaps in your knowledge, and how did you address them?
-* If applicable, include evidence of feedback received (from peers or instructors) and how it improved your approach or understanding.
 
-## Development Roadmap
+### Development Roadmap
 * What challenges did you face, and what strategies were used to overcome these challenges?
 * What new skills or tools do you plan to learn next based on your project experience? 
 
-## Deployment
-### Streamlit 
+### Deployment
+#### Streamlit 
 
 * The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
 * The project was deployed to Streamlit Community Cloud using the following steps.
@@ -225,11 +310,11 @@ Both statistical tests confirm that malicious connections tend to be shorter. Bo
 5. The deployment process should happen smoothly 
 
 
-## Main Data Analysis Libraries
+### Main Data Analysis Libraries
 * Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
 
 
-## Credits 
+### Credits 
 
 * In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
 * You can break the credits section up into Content and Media, depending on what you have included in your project. ### Content 
@@ -246,5 +331,5 @@ Both statistical tests confirm that malicious connections tend to be shorter. Bo
 
 
 
-## Acknowledgements
+### Acknowledgements
 * Thank the people who provided support through this project.

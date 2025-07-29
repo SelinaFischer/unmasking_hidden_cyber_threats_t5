@@ -461,29 +461,68 @@ This bootcamp has not only equipped us with new tools and techniques, it has bui
 5. The deployment process should happen smoothly 
 
 
+
+## Streamlit Interactive Dashboard
+
+
+Explore the interactive Unmasking Hidden Cyber Threats dashboard here:
+
+< link >
+
+
+---
+
+
 ## Main Data Analysis Libraries
 * Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
 
+Throughout this project, we used a combination of Python libraries for data cleaning, analysis, statistical testing, and visualisation. Below is a summary of the core libraries used and how we applied them:
 
-## Credits 
+| Library        | Purpose / Usage Example                                                                 |
+|----------------|------------------------------------------------------------------------------------------|
+| `pandas`       | Data manipulation and filtering (e.g. loading CSVs, grouping data by service type)      |
+| `numpy`        | Numerical operations and array processing (e.g. calculating anomaly ratios)              |
+| `matplotlib`   | Data visualisation (e.g. plotting feature distributions and boxplots)                    |
+| `seaborn`      | Statistical visualisation (e.g. heatmaps, violin plots, and pair plots for EDA)         |
+| `scipy.stats`  | Hypothesis testing (e.g. Mann-Whitney U, Chi-square, T-test on duration and service)    |
+| `sklearn`      | Train/test split for ML preparation and feature correlation analysis                    |
+| `plotly`       | Interactive visuals (e.g. bar charts with hover info for service-level anomaly counts)  |
+| `streamlit`    | Dashboard framework (e.g. displaying charts, filters, and <**etc fill in detail here**> )  |
 
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-* You can break the credits section up into Content and Media, depending on what you have included in your project. ### Content 
+These tools enabled us to uncover patterns in network traffic, test hypotheses statistically, and present the findings interactively.
 
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+---
 
 
-### Media
+##  Credits
 
-- The photos used on the home and sign-up page are from This Open-Source site
-- The images used for the gallery page were taken from this other open-source site
+- The base README structure was adapted from the **Code Institute Data Analytics Project Template**.
+- Code logic and dashboard interaction patterns were informed by materials from the **Code Institute LMS – Data Analytics & AI** modules.
 
 
 
-## Acknowledgements
-* Thank the people who provided support through this project.
+##  Acknowledgements
+
+This project was made possible through the use of the following resources, tools, and platforms:
+
+- **Network Intrusion Detection Dataset**  
+  Provided by Sampada Bhosale on Kaggle  
+  [Link to dataset](https://www.kaggle.com/datasets/sampadab17/network-intrusion-detection)
+
+- **OpenAI ChatGPT**  
+  Used extensively for ideation, troubleshooting, code optimisation, suggestions, review, and generating the project cover image  
+  [chat.openai.com](https://chat.openai.com)
+
+- **Streamlit Community Cloud**  
+  Deployment guidance was supported by the tutorial: *“How to deploy a Streamlit app on Community Cloud”*
+
+
+We would also like to thank:
+
+- **Our instructors and mentors** at Code Institute for their consistent guidance and encouragement throughout this bootcamp.
+- **Our teammates** who supported each other, contributed valuable ideas, and helped complete this Hackathon with a shared sense of ownership.
+
+This bootcamp has been one of the most rewarding experiences in our learning journey. We are proud of the knowledge, practical skills, and resilient mindset we’ve built along the way  and look forward to applying them in the real world.
 
 
 

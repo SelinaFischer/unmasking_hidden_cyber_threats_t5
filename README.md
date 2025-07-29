@@ -6,7 +6,6 @@
 * [Hypothesis Validation](https://github.com/SelinaFischer/unmasking_hidden_cyber_threats_t5/blob/main/jupyter_notebooks/3.%20hypothesis_validation.ipynb)
 
 
----
 
 
 
@@ -73,7 +72,7 @@ This structure supports both:
 **Data source**: [Kaggle – Network Intrusion Detection](https://www.kaggle.com/datasets/sampadab17/network-intrusion-detection/data)
 
 
----
+
 
 ## Business Requirements
 
@@ -190,7 +189,7 @@ Both statistical tests confirm that malicious connections tend to be shorter. Bo
 
 <br>
 
----
+
 
 ## Project Plan
 
@@ -207,10 +206,9 @@ This project followed a structured, collaborative 4-day plan to investigate hidd
 | Day 4     | Final Touch & Presentation             | - Polished dashboard visuals and added KPI cards <br> - Drafted business recommendations <br> - Prepared and rehearsed final presentation <br> - Completed README and mapped learning outcomes | Member 1 & Member 2 (Joint effort) |
 
 
-
 <br>
 
-## 📦 Data Management Process
+## Data Management Process
 
 Throughout the project, we applied a structured and disciplined approach to managing data:
 
@@ -222,7 +220,7 @@ Throughout the project, we applied a structured and disciplined approach to mana
 
 - **Interpretation**: Insights were developed through visual sketches, refined using Tableau, and presented in a Streamlit dashboard. Key findings were communicated through storytelling and supported in the final report.
 
----
+
 
 
 ## Methodology Rationale
@@ -239,9 +237,9 @@ We selected the following methodologies for analytical robustness and practical 
 Each method was selected to ensure our findings were statistically valid, explainable to stakeholders, and suitable for supporting early threat detection use cases.
 
 
----
 
-## ⚙️ Workflow & Analysis Techniques Used
+
+##  Workflow & Analysis Techniques Used
 
 ### Data Collection & Cleaning
 - Imported and inspected raw CSV files from Kaggle.
@@ -284,7 +282,7 @@ Each method was selected to ensure our findings were statistically valid, explai
 <br>
 
 
----
+
 
 ## Rationale to Map Business Requirements to Visualisations
 
@@ -298,14 +296,15 @@ Each method was selected to ensure our findings were statistically valid, explai
 
 
 
----
+
 
 ## Limitations
 
 - No timestamps – time-based trends unavailable  
 - High cardinality in `service` column – grouped infrequent categories  
 
----
+
+
 
 ## Ethical Considerations
 
@@ -315,7 +314,7 @@ Each method was selected to ensure our findings were statistically valid, explai
 - Communicated uncertainty and ensured interpretability  
  
 
----
+
 
 ## Findings, Recommendations and Conclusion
 
@@ -335,7 +334,7 @@ We began with a simple question:
 To answer this, we formulated hypotheses, validated them with statistical tests, and interpreted the results using visuals and correlations. Here's what we uncovered:
 
 
----
+
 
 ###  Hypothesis 1:  
 
@@ -393,6 +392,7 @@ These services represent the highest-risk categories in the dataset and should b
 | `vmnet`      | Virtual machine network interface protocol (may indicate virtualised probes or testing tools) |
 
 
+
 ### Interpretation:
 - These services are mostly **legacy, obscure, or virtualised protocols** that are **not commonly used in modern production environments**.
 - Their presence could suggest:
@@ -443,10 +443,8 @@ These findings can directly support:
 By unmasking these subtle but critical indicators, our project brings organisations one step closer to proactive, data-driven cybersecurity.
 
 
-
 <br>
 
----
 
 
 ##  Reflection
@@ -525,7 +523,7 @@ Throughout this project, we used a combination of Python libraries for data clea
 | `scipy.stats`  | Hypothesis testing (e.g. Mann-Whitney U, Chi-square, T-test on duration and service)    |
 | `sklearn`      | Train/test split for ML preparation and feature correlation analysis                    |
 | `plotly`       | Interactive visuals (e.g. bar charts with hover info for service-level anomaly counts)  |
-| `streamlit`    | Dashboard framework (e.g. displaying charts, filters, and <**etc fill in detail here**> )  |
+| `streamlit`    | Dashboard framework (e.g. displaying charts, filters, and <**fill in detail here**> )  |
 
 These tools enabled us to uncover patterns in network traffic, test hypotheses statistically, and present the findings interactively.
 

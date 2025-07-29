@@ -1,4 +1,12 @@
 
+### Navigation
+* [README](https://github.com/SelinaFischer/unmasking_hidden_cyber_threats_t5/blob/main/README.md)
+* [Raw data](https://github.com/SelinaFischer/unmasking_hidden_cyber_threats_t5/tree/main/data/raw)
+* [ETL pipeline](https://github.com/SelinaFischer/unmasking_hidden_cyber_threats_t5/blob/main/jupyter_notebooks/1.%20etl_data_prep.ipynb)
+* [Hypothesis Validation](https://github.com/SelinaFischer/unmasking_hidden_cyber_threats_t5/blob/main/jupyter_notebooks/3.%20hypothesis_validation.ipynb)
+
+
+---
 
 
 
@@ -33,7 +41,7 @@ Develop and evaluate a classification model to distinguish between normal and ma
 Design an intuitive Tableau/Streamlit dashboard that allows users to filter, visualise, and explore threat types, feature relationships, and anomaly trends.
 
 ### 5. Demonstrate AI-Enhanced Analytics
-Leverage AI tools (e.g. ChatGPT) for code generation, explanation, debugging, and storytelling to accelerate the analytics lifecycle.
+Leverage AI tools (e.g. ChatGPT) for code generation, explanation, debugging, and and insight-driven storytelling.
 
 ### 6. Promote Cybersecurity Awareness
 Translate technical insights into business-friendly recommendations that highlight the importance of early threat detection and data-driven defence strategies.
@@ -65,6 +73,7 @@ This structure supports both:
 **Data source**: [Kaggle – Network Intrusion Detection](https://www.kaggle.com/datasets/sampadab17/network-intrusion-detection/data)
 
 
+---
 
 ## Business Requirements
 
@@ -73,6 +82,7 @@ This structure supports both:
 - Equip security analysts with a visual, interactive dashboard to support investigation and response  
 - Reduce reliance on manual pattern recognition by surfacing statistically validated indicators  
 
+<br>
 
 
 ## Hypothesis and how to validate?
@@ -82,6 +92,7 @@ This structure supports both:
 ### Objectives
 
 The objective of hypothesis validation in this project is to apply statistical testing to uncover meaningful behavioural differences between normal and malicious network traffic. This helps identify patterns that could improve early threat detection and support cybersecurity decision-making.
+
 
 - **Detect Statistical Differences:**  
   Quantify whether key features (such as `src_bytes` or `duration`) show significant differences between normal and malicious traffic.
@@ -197,15 +208,21 @@ This project followed a structured, collaborative 4-day plan to investigate hidd
 
 
 
-## Data Management Process
+<br>
 
-Throughout the project, data was handled carefully at each stage:
+## 📦 Data Management Process
 
-- **Collection**: We used the publicly available Network Intrusion Detection dataset from Kaggle, which includes over 48,000 TCP/IP connection records across training and test sets.
-- **Processing**: We cleaned the dataset by removing duplicates, converting categorical features, handling imbalanced classes, and applying log transformations where needed.
-- **Analysis**: Initial EDA helped identify feature distributions and outliers. We then performed statistical testing to validate hypotheses about malicious versus normal traffic behaviour.
-- **Interpretation**: Insights were first explored in visual sketches, then fully implemented through Tableau with dynamic filters. Key takeaways were documented in the final report and dashboard storytelling.
+Throughout the project, we applied a structured and disciplined approach to managing data:
 
+- **Collection**: We used the publicly available *Network Intrusion Detection* dataset from Kaggle, which includes over 48,000 TCP/IP connection records split into training and test sets.
+
+- **Processing**: The dataset was cleaned by removing duplicates, converting categorical features, addressing class imbalance, and applying log transformations to skewed fields.
+
+- **Analysis**: We conducted Exploratory Data Analysis (EDA) to understand feature distributions, detect outliers, and guide the formation of hypotheses related to malicious versus normal network behaviour.
+
+- **Interpretation**: Insights were developed through visual sketches, refined using Tableau, and presented in a Streamlit dashboard. Key findings were communicated through storytelling and supported in the final report.
+
+---
 
 
 ## Methodology Rationale
@@ -222,44 +239,50 @@ We selected the following methodologies for analytical robustness and practical 
 Each method was selected to ensure our findings were statistically valid, explainable to stakeholders, and suitable for supporting early threat detection use cases.
 
 
+---
 
-
-## Workflow &  Analysis techniques used
+## ⚙️ Workflow & Analysis Techniques Used
 
 ### Data Collection & Cleaning
-- Imported and cleaned the raw train/test CSV files.
-- Ensured column consistency, handled missing values, and normalised key fields.
+- Imported and inspected raw CSV files from Kaggle.
+- Ensured schema consistency and handled duplicates and missing values.
+- Normalised features and prepared a clean dataset for analysis and modelling.
 
 ### Feature Engineering
-- Created new fields (e.g. log-transformed metrics).
-- Grouped high-cardinality categories.
-- Prepared the dataset for both statistical testing and model input.
+- Created derived variables (e.g. log-transformed features).
+- Grouped high-cardinality categories to improve clarity and model compatibility.
+- Structured the data to support both statistical testing and dashboard visualisation.
 
-### Exploratory Analysis
-- Used descriptive statistics and visualisation to understand distributions.
-- Detected anomalies and guided hypothesis formation.
+### Exploratory Data Analysis (EDA)
+- Used descriptive statistics and plots to explore feature behaviour.
+- Identified patterns and anomalies that informed hypothesis design.
 
 ### Hypothesis Validation
-- Applied statistical tests (Mann-Whitney U, T-test, Chi-square).
-- Validated key behavioural assumptions about malicious vs normal traffic.
+- Applied formal statistical tests:
+  - **Mann-Whitney U** for non-parametric comparisons
+  - **Independent T-test** for log-transformed duration
+  - **Chi-square** for categorical service-feature associations
+- Confirmed or rejected assumptions about behavioural differences between malicious and normal traffic.
 
-### Dashboard Design and Interactivity
-- Designed a multi-tab **Streamlit** dashboard with filters and layered visualisations.
-- Enabled users to explore threat patterns and trends interactively.
+### Dashboard Design & Interactivity
+- Developed a user-friendly, multi-tab **Streamlit** dashboard.
+- Implemented dynamic filters and layered visuals to allow interactive exploration of threats and trends.
 
 ### AI Integration & Support
-- Used generative AI (e.g. ChatGPT) for rapid prototyping, coding assistance, debugging, refining storytelling components and image creation.
+- Used **ChatGPT** to accelerate prototyping, debug code, improve narrative framing, and generate supporting assets (e.g. visuals and markdown).
+- Applied AI for storytelling enhancement, syntax checking, and ideation under time constraints.
 
-### Documentation and Reflection
-- Recorded key decisions, challenges, and lessons learned throughout the project.
-- Used GitHub for version control and project Kanban Board for task management.
+### Documentation & Project Tracking
+- Documented key design decisions, challenges, and iterations throughout the process.
+- Used GitHub for version control and Kanban board for team task management and progress tracking.
 
 ### Final Presentation
-- Delivered a walkthrough presentation covering insights, methodology, and dashboard demo.
-- Supported the presentation with summary visuals and interpreted findings.
+- Delivered a structured walkthrough presentation covering insights, statistical methodology, and dashboard demo.
+- Supported delivery with clear visuals, key takeaways, and actionable findings.
 
 
 <br>
+
 
 ---
 
@@ -275,12 +298,14 @@ Each method was selected to ensure our findings were statistically valid, explai
 
 
 
+---
+
 ## Limitations
 
 - No timestamps – time-based trends unavailable  
 - High cardinality in `service` column – grouped infrequent categories  
 
-
+---
 
 ## Ethical Considerations
 
@@ -290,6 +315,7 @@ Each method was selected to ensure our findings were statistically valid, explai
 - Communicated uncertainty and ensured interpretability  
  
 
+---
 
 ## Findings, Recommendations and Conclusion
 
@@ -591,3 +617,6 @@ This table explains the technical features and service labels found in the datas
 | `class`                      | Connection label: `normal` = legitimate, `anomaly` = malicious                               |
 
 
+
+
+[🔝 Back to Top](#)

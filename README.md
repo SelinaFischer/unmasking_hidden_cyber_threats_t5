@@ -217,42 +217,42 @@ Each method was selected to ensure our findings were statistically valid, explai
 
 ### Workflow &  Analysis techniques used
 
-#### Data Collection & Cleaning
+### Data Collection & Cleaning
 - Imported and cleaned the raw train/test CSV files.
 - Ensured column consistency, handled missing values, and normalised key fields.
 
-#### Feature Engineering
+### Feature Engineering
 - Created new fields (e.g. log-transformed metrics).
 - Grouped high-cardinality categories.
 - Prepared the dataset for both statistical testing and model input.
 
-#### Exploratory Analysis
+### Exploratory Analysis
 - Used descriptive statistics and visualisation to understand distributions.
 - Detected anomalies and guided hypothesis formation.
 
-#### Hypothesis Validation
+### Hypothesis Validation
 - Applied statistical tests (Mann-Whitney U, T-test, Chi-square).
 - Validated key behavioural assumptions about malicious vs normal traffic.
 
-#### Dashboard Design and Interactivity
+### Dashboard Design and Interactivity
 - Designed a multi-tab **Streamlit** dashboard with filters and layered visualisations.
 - Enabled users to explore threat patterns and trends interactively.
 
-#### AI Integration & Support
+### AI Integration & Support
 - Used generative AI (e.g. ChatGPT) for rapid prototyping, coding assistance, debugging, refining storytelling components and image creation.
 
-#### Documentation and Reflection
+### Documentation and Reflection
 - Recorded key decisions, challenges, and lessons learned throughout the project.
 - Used GitHub for version control and project Kanban Board for task management.
 
-#### Final Presentation
+### Final Presentation
 - Delivered a walkthrough presentation covering insights, methodology, and dashboard demo.
 - Supported the presentation with summary visuals and interpreted findings.
 
 
 
 
-### Rationale to Map Business Requirements to Visualisations
+## Rationale to Map Business Requirements to Visualisations
 
 | **Business Requirement**      | **Mapped Visualisation Feature**                                                               |
 |------------------------------|-------------------------------------------------------------------------------------------------|
@@ -264,14 +264,14 @@ Each method was selected to ensure our findings were statistically valid, explai
 
 
 
-### Limitations
+## Limitations
 
 - No timestamps – time-based trends unavailable  
 - High cardinality in `service` column – grouped infrequent categories  
 
 
 
-### Ethical Considerations
+## Ethical Considerations
 
 - Dataset is synthetic with no personal data  
 - Considered implications of false positives and detection risk  
@@ -279,7 +279,7 @@ Each method was selected to ensure our findings were statistically valid, explai
 - Communicated uncertainty and ensured interpretability  
  
 
-### Findings, Recommendations and Conclusion
+## Findings, Recommendations and Conclusion
 
 
 In this project, the term **class** refers to the label assigned to each network connection in the dataset:
@@ -366,7 +366,7 @@ They are strong candidates for **automatic alerting or high-severity flagging** 
 
 
 
-###  Recommendations
+##  Recommendations
 
 1. **Use High-Impact Features for Detection**
    - Prioritise `serror_rate`, `srv_serror_rate`, and `count` in both ML models and rule-based systems.
@@ -388,7 +388,7 @@ They are strong candidates for **automatic alerting or high-severity flagging** 
    - Validate model assumptions with exploratory data testing just as we did in this project.
 
 
-###  Conclusion
+##  Conclusion
 
 This project set out to uncover hidden patterns behind cyberattacks  and delivered actionable, explainable insights.
 
@@ -409,9 +409,8 @@ By unmasking these subtle but critical indicators, our project brings organisati
 
 ---
 
-### Reflection
 
-## ✨ Reflection
+##  Reflection
 
 This project marks the final milestone of our 4-month **Data Analytics & AI Bootcamp**  a journey that has been both intense and transformative. Over the course of the programme, we immersed ourselves in practical learning through **three Hackathons** and a **Capstone project**, applying new concepts in real-world scenarios under tight deadlines.
 
@@ -430,19 +429,23 @@ This bootcamp has not only equipped us with new tools and techniques, it has bui
 
 
 <br>
+
 ---
-### Dashboard Design
+
+
+## Dashboard Design
 * List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
 * Later, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but subsequently you used another plot type).
 * How were data insights communicated to technical and non-technical audiences?
 * Explain how the dashboard was designed to communicate complex data insights to different audiences. 
 
 
-### Development Roadmap
+## Development Roadmap
 * What challenges did you face, and what strategies were used to overcome these challenges?
 * What new skills or tools do you plan to learn next based on your project experience? 
 
-### Deployment
+
+## Deployment
 #### Streamlit 
 
 * The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
@@ -455,11 +458,11 @@ This bootcamp has not only equipped us with new tools and techniques, it has bui
 5. The deployment process should happen smoothly 
 
 
-### Main Data Analysis Libraries
+## Main Data Analysis Libraries
 * Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
 
 
-### Credits 
+## Credits 
 
 * In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
 * You can break the credits section up into Content and Media, depending on what you have included in your project. ### Content 
@@ -476,7 +479,7 @@ This bootcamp has not only equipped us with new tools and techniques, it has bui
 
 
 
-### Acknowledgements
+## Acknowledgements
 * Thank the people who provided support through this project.
 
 

@@ -174,12 +174,7 @@ Both statistical tests confirm that malicious connections tend to be shorter. Bo
 
 
 
-## Project Plan
-* Outline the high-level steps taken for the analysis.
-* How was the data managed throughout the collection, processing, analysis and interpretation steps?
-* Why did you choose the research methodologies you used?
-
-## Project Plan
+### Project Plan
 
 This project followed a structured, collaborative 4-day plan to investigate hidden patterns in network traffic data and build an interactive dashboard that supports cybersecurity insights. Below is a summary of our approach, data management process, and methodology choices.
 

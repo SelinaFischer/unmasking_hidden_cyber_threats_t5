@@ -334,35 +334,29 @@ Beyond the hypotheses, we examined feature correlations with `class` labels. Som
 
 
 
-### Top 5 High-Risk Services
+###  Top 5 High-Risk Services
 
-Based on frequency and anomaly ratios, the following services were found to have a **100% anomaly rate**  all traffic using them was malicious.
+Based on frequency and anomaly ratios, the following **five services** were found to have a **100% anomaly rate** — meaning **every single connection** using these services was flagged as **malicious**.
 
+These services represent the highest-risk categories in the dataset and should be treated as strong indicators of cyber threats in any network monitoring system.
 
-| Service Name  | Description (Likely Use or Origin)                                       |
-|---------------|---------------------------------------------------------------------------|
-| `uucp_path`   | Legacy Unix-to-Unix Copy Protocol path                                    |
-| `supdup`      | Obsolete remote terminal protocol                                         |
-| `nnsp`        | Network News Server Protocol (outdated Usenet service)                   |
-| `courier`     | Email transfer agent (uncommon today, sometimes exploited)               |
-| `klogin`      | Kerberos login protocol, used for remote authentication (often outdated) |
-| `eco_i`       | Echo service (may be used in diagnostics or abuse scenarios)             |
-| `ecr_i`       | Echo reply service (similar use as `eco_i`)                              |
-| `private`     | Catch-all label for private or unrecognized services                     |
+| Service Name | Description                                         |
+|--------------|----------------------------------------------------------------------------|
+| `nnsp`       | Network News Server Protocol (obsolete Usenet-related service)            |
+| `supdup`     | Obsolete remote terminal protocol                                         |
+| `uucp`       | Unix-to-Unix Copy Protocol — legacy file transfer method                  |
+| `uucp_path`  | Variation of UUCP path (legacy Unix routing path)                         |
+| `vmnet`      | Virtual machine network interface protocol (may indicate virtualised probes or testing tools) |
 
 
-
-
-
-### **Insights**:
-- These are **extremely high-risk services** in the context of this dataset and should be treated as strong indicators of attack if detected in a real-world environment.
-- Most of these services are **legacy or obscure protocols**, rarely used in modern systems.
+### Interpretation:
+- These services are mostly **legacy, obscure, or virtualised protocols** that are **not commonly used in modern production environments**.
 - Their presence could suggest:
-  - Exploitation of outdated configurations
-  - Simulated attacks in controlled environments
-  - Vulnerable systems running obsolete services
+  - Misconfigured or unmonitored legacy systems
+  - Virtualised environments running attack simulations
+  - Vulnerability scanners or exploit frameworks mimicking outdated service behaviour
 
-These findings reinforce the value of **service type** as a key feature in intrusion detection models.
+They are strong candidates for **automatic alerting or high-severity flagging** in real-time intrusion detection systems.
 
 
 

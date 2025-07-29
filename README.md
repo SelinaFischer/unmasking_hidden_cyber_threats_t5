@@ -2,7 +2,7 @@
 
 
 
-### Introduction:
+## Introduction:
 
 
 
@@ -16,31 +16,31 @@ Through a clean ETL pipeline, validated hypotheses, and an interactive dashboard
 
 
 
-### Objectives
+## Objectives
 
 The primary objectives of this project are to:
 
-#### 1. Detect Patterns Behind Cyber Threats
+### 1. Detect Patterns Behind Cyber Threats
 Analyse historical network traffic to uncover patterns and behaviours associated with intrusion attempts and anomalies.
 
-#### 2. Validate Data-Driven Hypotheses
+### 2. Validate Data-Driven Hypotheses
 Use statistical testing (Mann-Whitney U, Chi-square, T-test) to verify relationships between connection attributes (e.g. duration, service, flag) and attack types.
 
-#### 3. Build a Predictive Model for Intrusion Detection
+### 3. Build a Predictive Model for Intrusion Detection
 Develop and evaluate a classification model to distinguish between normal and malicious connections using features from the dataset.
 
-#### 4. Deliver Actionable Insights via Interactive Dashboard
+### 4. Deliver Actionable Insights via Interactive Dashboard
 Design an intuitive Tableau/Streamlit dashboard that allows users to filter, visualise, and explore threat types, feature relationships, and anomaly trends.
 
-#### 5. Demonstrate AI-Enhanced Analytics
+### 5. Demonstrate AI-Enhanced Analytics
 Leverage AI tools (e.g. ChatGPT) for code generation, explanation, debugging, and storytelling to accelerate the analytics lifecycle.
 
-#### 6. Promote Cybersecurity Awareness
+### 6. Promote Cybersecurity Awareness
 Translate technical insights into business-friendly recommendations that highlight the importance of early threat detection and data-driven defence strategies.
 
 
 
-### Dataset Content
+## Dataset Content
 
 We used the **Network Intrusion Detection** dataset from Kaggle, which contains over 48,000 records of simulated TCP/IP network connections. The dataset is split into two files:
 
@@ -66,7 +66,7 @@ This structure supports both:
 
 
 
-### Business Requirements
+## Business Requirements
 
 - Identify suspicious patterns in network traffic for early threat detection  
 - Classify connections as normal or anomalous based on their behavior  
@@ -74,11 +74,12 @@ This structure supports both:
 - Reduce reliance on manual pattern recognition by surfacing statistically validated indicators  
 
 
-### Hypothesis and how to validate?
 
-#### Hypothesis Validation
+## Hypothesis and how to validate?
 
-#### Objectives
+### Hypothesis Validation
+
+### Objectives
 
 The objective of hypothesis validation in this project is to apply statistical testing to uncover meaningful behavioural differences between normal and malicious network traffic. This helps identify patterns that could improve early threat detection and support cybersecurity decision-making.
 
@@ -98,6 +99,7 @@ The objective of hypothesis validation in this project is to apply statistical t
   Use validated hypotheses to inform detection rules, classification models, or security monitoring strategies.
 
 
+---
 
 ### Hypothesis 1: Malicious traffic has significantly higher src_bytes than normal traffic
 
@@ -116,6 +118,7 @@ Mann-Whitney U test (non-parametric, one-tailed)
 **Interpretation:**  
 There is no significant evidence that malicious traffic sends more data. In fact, visualisation (boxplot and violin plot) suggests the opposite—malicious connections typically have *lower* `src_bytes`, with many near zero. This feature is not a strong indicator of attack behaviour in this dataset.
 
+---
 
 
 ### Hypothesis 2: Certain service types are more vulnerable to cyberattacks
@@ -139,6 +142,7 @@ There is a strong statistical association between service type and attack likeli
 **Recommendation:**  
 Monitor and restrict high-risk service types. Audit legacy services and deprecate if not needed.
 
+---
 
 
 ### Hypothesis 3: Malicious connections tend to have shorter durations than normal ones
@@ -159,6 +163,7 @@ Monitor and restrict high-risk service types. Audit legacy services and deprecat
 | T-Test                   | t = -11.29        | 0.0000   | Reject H₀           |
 | Mann-Whitney U           | U = 72,505,755.5  | 0.0000   | Reject H₀           |
 
+
 **Interpretation:**  
 Both statistical tests confirm that malicious connections tend to be shorter. Boxplots and log-transformed duration visualisations support this. This insight can be used to inform intrusion detection logic.
 
@@ -172,14 +177,16 @@ Both statistical tests confirm that malicious connections tend to be shorter. Bo
 | H2         | `service` type        | Chi-square            | p < 0.0001             | Supported                            |
 | H3         | `duration`            | T-test, Mann-Whitney  | p < 0.0001 (both)      | Supported                            |
 
+<br>
 
+---
 
-### Project Plan
+## Project Plan
 
 This project followed a structured, collaborative 4-day plan to investigate hidden patterns in network traffic data and build an interactive dashboard that supports cybersecurity insights. Below is a summary of our approach, data management process, and methodology choices.
 
 
-### High-Level Steps
+## High-Level Steps
 
 | **Day**   | **Focus Area**                         | **Key Activities**                                                                                                                                       | **Owner(s)**                          |
 |-----------|----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
@@ -190,7 +197,7 @@ This project followed a structured, collaborative 4-day plan to investigate hidd
 
 
 
-### Data Management Process
+## Data Management Process
 
 Throughout the project, data was handled carefully at each stage:
 
@@ -200,7 +207,8 @@ Throughout the project, data was handled carefully at each stage:
 - **Interpretation**: Insights were first explored in visual sketches, then fully implemented through Tableau with dynamic filters. Key takeaways were documented in the final report and dashboard storytelling.
 
 
-### Methodology Rationale
+
+## Methodology Rationale
 
 We selected the following methodologies for analytical robustness and practical applicability:
 
@@ -215,7 +223,8 @@ Each method was selected to ensure our findings were statistically valid, explai
 
 
 
-### Workflow &  Analysis techniques used
+
+## Workflow &  Analysis techniques used
 
 ### Data Collection & Cleaning
 - Imported and cleaned the raw train/test CSV files.
@@ -250,7 +259,9 @@ Each method was selected to ensure our findings were statistically valid, explai
 - Supported the presentation with summary visuals and interpreted findings.
 
 
+<br>
 
+---
 
 ## Rationale to Map Business Requirements to Visualisations
 
@@ -278,6 +289,7 @@ Each method was selected to ensure our findings were statistically valid, explai
 - Addressed potential bias in service-type association  
 - Communicated uncertainty and ensured interpretability  
  
+
 
 ## Findings, Recommendations and Conclusion
 
@@ -364,7 +376,7 @@ These services represent the highest-risk categories in the dataset and should b
 
 They are strong candidates for **automatic alerting or high-severity flagging** in real-time intrusion detection systems.
 
-
+<br>
 
 ##  Recommendations
 
@@ -386,6 +398,7 @@ They are strong candidates for **automatic alerting or high-severity flagging** 
 5. **Guide Model Building with Evidence**
    - Use correlation analysis to inform feature selection in anomaly detection models.
    - Validate model assumptions with exploratory data testing just as we did in this project.
+
 
 
 ##  Conclusion
@@ -428,7 +441,6 @@ We adapted quickly, redistributed the workload, and stayed focused on quality, d
 This experience reinforced the importance of accountability, adaptability, and collaboration. These are skills that are just as essential as technical expertise in the data field. As we close this chapter, we do so with pride, knowing we have pushed ourselves, grown tremendously, and produced work we stand behind.
 
 This bootcamp has not only equipped us with new tools and techniques, it has built the confidence and mindset to continue learning, solving problems, and delivering value as future data professionals.
-
 
 
 <br>

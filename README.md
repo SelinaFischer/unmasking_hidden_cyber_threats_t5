@@ -268,7 +268,7 @@ Each method was selected to ensure our findings were statistically valid, explai
 
 ### AI Integration & Support
 - Used **ChatGPT** to accelerate prototyping, debug code, improve narrative framing, and generate supporting assets (e.g. visuals and markdown).
-- Applied AI for storytelling enhancement, syntax checking, and ideation under time constraints.
+- Applied AI for storytelling enhancement, syntax checking, and ideation.
 
 ### Documentation & Project Tracking
 - Documented key design decisions, challenges, and iterations throughout the process.
@@ -558,7 +558,6 @@ We would also like to thank:
 - **Our instructors and mentors** at Code Institute for their consistent guidance and encouragement throughout this bootcamp.
 - **Our teammates** who supported each other, contributed valuable ideas, and helped complete this Hackathon with a shared sense of ownership.
 
-This bootcamp has been one of the most rewarding experiences in our learning journey. We are proud of the knowledge, practical skills, and resilient mindset we’ve built along the way  and look forward to applying them in the real world.
 
 
 

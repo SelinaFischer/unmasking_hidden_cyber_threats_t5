@@ -270,7 +270,7 @@ with tab2:
     st.pyplot(fig4)
 
 
-    st.subheader("Violin Plot: Duration by Class (Normal vs Anomaly)")
+
 
 with tab3:
     

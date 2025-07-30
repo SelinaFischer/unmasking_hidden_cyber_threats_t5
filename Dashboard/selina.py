@@ -32,30 +32,7 @@ st.markdown(
 dataset = st.sidebar.radio("Select Dataset", ["Train", "Test", "Both"])
 st.sidebar.markdown("**Filters (visuals only)**")
 
-# Glossary for sidebar labels
-with st.sidebar.expander("Glossary", expanded=False):
-    st.markdown(
-        """
-**Protocol Type**  
-- **tcp**: Transmission Control Protocol  
-- **udp**: User Datagram Protocol  
-- **icmp**: Internet Control Message Protocol  
 
-**Flag**  
-- **SF**: Normal establishment and teardown  
-- **S0**: No reply to connection attempt  
-- **REJ**: Connection attempt rejected  
-- **RSTR**: RST from the remote host  
-- **RSTO**: RST from the originator  
-- **S1**: Connection established, only one data packet  
-- **S2**: Connection established, two data packets  
-- **S3**: Connection fully established (three-way handshake)  
-- **RSTOS0**: RST after SYN without ACK  
-- **SH**: SYN and FIN seen, half-open connection  
-- **OTH**: Other states  
-""",
-        unsafe_allow_html=True,
-    )
 
 
 @st.cache_data
@@ -264,36 +241,4 @@ with tab4:
 - H3: Malicious traffic has shorter `duration` (T-test)
     """, unsafe_allow_html=True)
 
-    df_train_data = df_full[df_full["source"] == "Train"].copy()
-    def preprocess(dfm):
-        dfm = dfm.drop(columns=["source"], errors="ignore")
-        for c in dfm.select_dtypes("object").columns:
-            dfm[c] = LabelEncoder().fit_transform(dfm[c])
-        return dfm
-
-    df_enc = preprocess(df_train_data)
-    X = df_enc.drop("class", axis=1)
-    y = df_enc["class"]
-    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
-
-    clf = RandomForestClassifier(n_estimators=100, random_state=42)
-    clf.fit(X_train, y_train)
-    y_pred = clf.predict(X_val)
-
-    st.subheader("Classification Report")
-    st.text(classification_report(y_val, y_pred))
-
-    st.subheader("Confusion Matrix")
-    fig_cm = px.imshow(
-        confusion_matrix(y_val, y_pred),
-        labels=dict(x="Predicted", y="Actual", color="Count"),
-        x=["normal", "anomaly"], y=["normal", "anomaly"], text_auto=True
-    )
-    st.plotly_chart(fig_cm, use_container_width=True)
-
-    st.subheader("Download Predictions")
-    df_test_data = df_full[df_full["source"] == "Test"].copy()
-    df_test_enc = preprocess(df_test_data)
-    df_test_data["prediction"] = clf.predict(df_test_enc.drop("class", axis=1))
-    csv = df_test_data.to_csv(index=False).encode("utf-8")
-    st.download_button("Download Test Set Predictions", data=csv, file_name="predictions_with_interpretations.csv", mime="text/csv")
+    

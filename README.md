@@ -1,5 +1,6 @@
-# Ummasking Hidden Cyber Threats
-<img src='images/cover.png' alt='Cover image'>
+
+![project cover](<Cyber Coverv2.png>)
+
 
 ### Navigation
 * [README](https://github.com/SelinaFischer/unmasking_hidden_cyber_threats_t5/blob/main/README.md)
@@ -481,21 +482,18 @@ This bootcamp has not only equipped us with new tools and techniques, it has bui
 
 
 ## Dashboard Design
-* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
-* Later, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but subsequently you used another plot type).
-* How were data insights communicated to technical and non-technical audiences?
-* Explain how the dashboard was designed to communicate complex data insights to different audiences. 
+
+We independently prototyped our ideas and designs, walked through each other’s work to provide feedback, and then merged two Streamlit apps into a single, cohesive dashboard with tabs for Project Overview, KPIs, Visualizations, Statistical Tests, Predictive Model, and Settings & Glossary. It features interactive Plotly charts, Seaborn/Matplotlib heatmaps, and customizable sidebar filters. By layering high‑level metric cards and plain‑language summaries for non‑technical users over detailed tables, code snippets, and statistical outputs for technical audiences, the dashboard delivers insights at every level while maintaining a unified look and feel through shared CSS and theme modules.
 
 
 ## Development Roadmap
-* What challenges did you face, and what strategies were used to overcome these challenges?
-* What new skills or tools do you plan to learn next based on your project experience? 
+As two contributors handling what would be a four‑person workload, we condensed our scope to deliver core features quickly. Our feedback sessions identified UX and code‑architecture refinements that we were unable to implement in time. In future work we will address those refinements and incorporate further enhancements based on user feedback.
 
 
 ## Deployment
 #### Streamlit 
 
-* The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
+* Streamlit Dashboard live link is: https://cyberninjas.streamlit.app/ 
 * The project was deployed to Streamlit Community Cloud using the following steps.
 
 1. Log in to Streamlit Community Cloud and create an App
@@ -511,7 +509,7 @@ This bootcamp has not only equipped us with new tools and techniques, it has bui
 
 Explore the interactive Unmasking Hidden Cyber Threats dashboard here:
 
-< link >
+https://cyberninjas.streamlit.app/ 
 
 
 ---

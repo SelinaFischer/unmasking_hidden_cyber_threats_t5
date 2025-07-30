@@ -3,6 +3,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import MinMaxScaler
 import plotly.express as px
@@ -22,7 +24,7 @@ feature_cols = ['count', 'serror_rate', 'srv_serror_rate',
 st.set_page_config(page_title="Cyber Threat Visual Dashboard", layout="wide")
 st.title("🔍 Cyber Threat Detection Dashboard")
 
-tab1, tab2, tab3 = st.tabs(["📊 Distribution of Features", "📈 Feature Importance", "📦 Service Breakdown"])
+tab1, tab2, tab3, tab4 = st.tabs(["📊 Distribution of Features", "📈 Feature Importance", "📦 Service Breakdown", "📈 Correlation Heatmap"])
 
 # -- 1. Distribution of Features by Class --
 
@@ -92,3 +94,14 @@ with tab3:
         barmode='stack'
     )
     st.plotly_chart(fig3, use_container_width=True)
+
+# ---4. correlation heatmap ---
+
+with tab4:
+    st.subheader("📈 Correlation Matrix")
+    # while heatmap is too large so selecting the columns that indicates positive correlation
+    subset_df = df.loc[:, df.columns.str.contains('rate|count|class', case=False)]
+
+    fig4 = plt.figure(figsize=(30, 15))
+    sns.heatmap(subset_df.corr(numeric_only=True), annot=True, cmap='coolwarm')
+    st.pyplot(fig4)

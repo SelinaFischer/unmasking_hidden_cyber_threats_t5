@@ -60,8 +60,8 @@ We used the **Network Intrusion Detection** dataset from Kaggle, which contains 
 
 Each connection record includes **41 features**, both numeric and categorical, describing network behaviour such as:
 
-- `duration`, `src_bytes`, `dst_bytes`
-- `protocol_type`, `service`, `flag`
+- Numerical features like `duration`, `src_bytes`, `dst_bytes`
+- Categorical features like `protocol_type`, `service`, `flag`
 - Statistical indicators like `same_srv_rate`, `rerror_rate`, and `dst_host_count`
 
 The `class` label in the training data specifies whether a connection is **normal** or a known **attack type** (e.g. `neptune`, `smurf`, `satan`).

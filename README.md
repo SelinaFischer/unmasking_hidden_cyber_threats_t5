@@ -50,7 +50,6 @@ Translate technical insights into business-friendly recommendations that highlig
 
 
 ## Dataset Content
-
 We used the **Network Intrusion Detection** dataset from Kaggle, which contains over 48,000 records of simulated TCP/IP network connections. The dataset is split into two files:
 
 | Dataset         | Rows   | Columns | Label Column | Purpose                                           |
@@ -63,6 +62,8 @@ Each connection record includes **41 features**, both numeric and categorical, d
 - Numerical features like `duration`, `src_bytes`, `dst_bytes`
 - Categorical features like `protocol_type`, `service`, `flag`
 - Statistical indicators like `same_srv_rate`, `rerror_rate`, and `dst_host_count`
+
+*Check [glossary](#glossary-of-feature-names) to see the explanation of terminology*
 
 The `class` label in the training data specifies whether a connection is **normal** or a known **attack type** (e.g. `neptune`, `smurf`, `satan`).
 

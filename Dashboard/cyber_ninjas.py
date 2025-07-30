@@ -16,7 +16,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 # --- Layout ---
 st.set_page_config(page_title="Cyber Threat Visual Dashboard", layout="wide")
-st.title("🔍 Cyber Threat Detection Dashboard")
+st.title("Cyber Threat Detection Dashboard")
 # Load data
 df = pd.read_csv("data/cleaned/cleaned_train.csv")
 

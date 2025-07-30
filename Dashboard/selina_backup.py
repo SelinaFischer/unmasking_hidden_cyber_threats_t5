@@ -148,15 +148,16 @@ with tab1:
 with tab2:
     st.header("Interactive Visualizations")
     if df_vis["class"].nunique() > 1:
-        st.plotly_chart(px.box(df_vis, x="class", y="src_bytes", title="src_bytes (log scale)", log_y=True), use_container_width=True)
-        st.plotly_chart(px.box(df_vis, x="class", y="duration", title="duration (log scale)", log_y=True), use_container_width=True)
+        st.plotly_chart(px.box(df_vis, x="class", y="src_bytes", title="Source Bytes per Connection (Log‑Scaled) Across All Sessions", log_y=True), use_container_width=True)
+        st.plotly_chart(px.box(df_vis, x="class", y="duration", title="Log‑Scale Distribution of Connection Durations: Normal vs. Anomalous Sessions", log_y=True), use_container_width=True)
     else:
         st.warning("Need both classes to show boxplots")
-    st.plotly_chart(px.violin(df_vis, x="class", y="log_src_bytes", box=True, points="all", title="Violin of log(src_bytes+1)"), use_container_width=True)
+    st.plotly_chart(px.violin(df_vis, x="class", y="log_src_bytes", box=True, points="all", title="Violin of log(src_bytes+1) - Amount of Data Sent: Normal vs. Suspicious Connections"), use_container_width=True)
     corr = df_vis.select_dtypes("number").corr()
     fig, ax = plt.subplots(figsize=(8, 6))
     sns.heatmap(corr, cmap="coolwarm", center=0, ax=ax)
     st.pyplot(fig)
+
 
 with tab3:
     st.header("Statistical Hypothesis Testing")

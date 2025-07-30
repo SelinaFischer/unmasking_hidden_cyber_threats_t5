@@ -205,7 +205,6 @@ Both statistical tests confirm that malicious connections tend to be shorter. Bo
 This project followed a structured, collaborative 4-day plan to investigate hidden patterns in network traffic data and build an interactive dashboard that supports cybersecurity insights. Below is a summary of our approach, data management process, and methodology choices.
 
 
-## High-Level Steps
 
 ## High-Level Steps
 

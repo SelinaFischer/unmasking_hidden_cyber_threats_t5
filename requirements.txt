@@ -9,8 +9,8 @@ scikit-learn
 xgboost
 streamlit-tree-select
 
-
-
+ydata-profiling==0
+htmlmin==0
 
 
 

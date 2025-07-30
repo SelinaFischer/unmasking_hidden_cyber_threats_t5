@@ -50,7 +50,6 @@ Translate technical insights into business-friendly recommendations that highlig
 
 
 ## Dataset Content
-
 We used the **Network Intrusion Detection** dataset from Kaggle, which contains over 48,000 records of simulated TCP/IP network connections. The dataset is split into two files:
 
 | Dataset         | Rows   | Columns | Label Column | Purpose                                           |
@@ -63,6 +62,8 @@ Each connection record includes **41 features**, both numeric and categorical, d
 - Numerical features like `duration`, `src_bytes`, `dst_bytes`
 - Categorical features like `protocol_type`, `service`, `flag`
 - Statistical indicators like `same_srv_rate`, `rerror_rate`, and `dst_host_count`
+
+*Check [glossary](#glossary-of-feature-names) to see the explanation of terminology*
 
 The `class` label in the training data specifies whether a connection is **normal** or a known **attack type** (e.g. `neptune`, `smurf`, `satan`).
 
@@ -127,6 +128,8 @@ Mann-Whitney U test (non-parametric, one-tailed)
 - p-value = 1.00000  
 - Conclusion: **Fail to reject H₀**
 
+<img src='images/h1.png' alt='Hypothesis1 graph' width ='700'>
+
 **Interpretation:**  
 There is no significant evidence that malicious traffic sends more data. In fact, visualisation (boxplot and violin plot) suggests the opposite—malicious connections typically have *lower* `src_bytes`, with many near zero. This feature is not a strong indicator of attack behaviour in this dataset.
 
@@ -147,6 +150,8 @@ Chi-Square Test of Independence (on filtered service counts > 100)
 - Degrees of Freedom = 32  
 - p-value = 0.0000  
 - Conclusion: **Reject H₀**
+
+<img src ='images/h2.png' alt ='Hypothesis2 image' width ='700'>
 
 **Interpretation:**  
 There is a strong statistical association between service type and attack likelihood. Services like `smtp`, `ftp`, `telnet`, and `private` have high anomaly counts. Some legacy services (e.g. `uucp`, `nnsp`) show a 100% anomaly rate, indicating they are exclusive to attack traffic in this dataset.
@@ -175,6 +180,7 @@ Monitor and restrict high-risk service types. Audit legacy services and deprecat
 | T-Test                   | t = -11.29        | 0.0000   | Reject H₀           |
 | Mann-Whitney U           | U = 72,505,755.5  | 0.0000   | Reject H₀           |
 
+<img src='images/h3.png' alt='Hypothesis3 image' width= '700'>
 
 **Interpretation:**  
 Both statistical tests confirm that malicious connections tend to be shorter. Boxplots and log-transformed duration visualisations support this. This insight can be used to inform intrusion detection logic.
@@ -216,9 +222,9 @@ Throughout the project, we applied a structured and disciplined approach to mana
 
 - **Collection**: We used the publicly available *Network Intrusion Detection* dataset from Kaggle, which includes over 48,000 TCP/IP connection records split into training and test sets.
 
-- **Processing**: The dataset was cleaned by removing duplicates, converting categorical features, addressing class imbalance, and applying log transformations to skewed fields.
+- **Processing**: The dataset was cleaned by checking for null values, removing duplicates and unneccesary columns, converting categorical features, addressing variable imbalance, and applying log transformations to skewed fields.
 
-- **Analysis**: We conducted Exploratory Data Analysis (EDA) to understand feature distributions, detect outliers, and guide the formation of hypotheses related to malicious versus normal network behaviour.
+- **Analysis**: We conducted Exploratory Data Analysis (EDA) to understand feature distributions, detect outliers, correlation heatmap, and guide the formation of hypotheses related to malicious versus normal network behaviour.
 
 - **Interpretation**: Insights were developed through visual sketches, refined using Tableau, and presented in a Streamlit dashboard. Key findings were communicated through storytelling and supported in the final report.
 

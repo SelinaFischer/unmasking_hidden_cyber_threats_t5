@@ -216,7 +216,7 @@ Throughout the project, we applied a structured and disciplined approach to mana
 
 - **Collection**: We used the publicly available *Network Intrusion Detection* dataset from Kaggle, which includes over 48,000 TCP/IP connection records split into training and test sets.
 
-- **Processing**: The dataset was cleaned by removing duplicates, converting categorical features, addressing class imbalance, and applying log transformations to skewed fields.
+- **Processing**: The dataset was cleaned by checking for null values, removing duplicates and unneccesary columns, converting categorical features, addressing variable imbalance, and applying log transformations to skewed fields.
 
 - **Analysis**: We conducted Exploratory Data Analysis (EDA) to understand feature distributions, detect outliers, and guide the formation of hypotheses related to malicious versus normal network behaviour.
 

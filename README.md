@@ -128,6 +128,8 @@ Mann-Whitney U test (non-parametric, one-tailed)
 - p-value = 1.00000  
 - Conclusion: **Fail to reject H₀**
 
+<img src='images/h1.png' alt='Hypothesis1 graph' width ='700'>
+
 **Interpretation:**  
 There is no significant evidence that malicious traffic sends more data. In fact, visualisation (boxplot and violin plot) suggests the opposite—malicious connections typically have *lower* `src_bytes`, with many near zero. This feature is not a strong indicator of attack behaviour in this dataset.
 
@@ -148,6 +150,8 @@ Chi-Square Test of Independence (on filtered service counts > 100)
 - Degrees of Freedom = 32  
 - p-value = 0.0000  
 - Conclusion: **Reject H₀**
+
+<img src ='images/h2.png' alt ='Hypothesis2 image' width ='700'>
 
 **Interpretation:**  
 There is a strong statistical association between service type and attack likelihood. Services like `smtp`, `ftp`, `telnet`, and `private` have high anomaly counts. Some legacy services (e.g. `uucp`, `nnsp`) show a 100% anomaly rate, indicating they are exclusive to attack traffic in this dataset.
@@ -176,6 +180,7 @@ Monitor and restrict high-risk service types. Audit legacy services and deprecat
 | T-Test                   | t = -11.29        | 0.0000   | Reject H₀           |
 | Mann-Whitney U           | U = 72,505,755.5  | 0.0000   | Reject H₀           |
 
+<img src='images/h3.png' alt='Hypothesis3 image' width= '700'>
 
 **Interpretation:**  
 Both statistical tests confirm that malicious connections tend to be shorter. Boxplots and log-transformed duration visualisations support this. This insight can be used to inform intrusion detection logic.

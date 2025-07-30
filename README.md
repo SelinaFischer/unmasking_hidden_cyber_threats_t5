@@ -483,7 +483,8 @@ This bootcamp has not only equipped us with new tools and techniques, it has bui
 
 ## Dashboard Design
 
-We independently prototyped our ideas and designs, walked through each other’s work to provide feedback, and then merged two Streamlit apps into a single, cohesive dashboard with tabs for Project Overview, KPIs, Visualizations, Statistical Tests, Predictive Model, and Settings & Glossary. It features interactive Plotly charts, Seaborn/Matplotlib heatmaps, and customizable sidebar filters. By layering high‑level metric cards and plain‑language summaries for non‑technical users over detailed tables, code snippets, and statistical outputs for technical audiences, the dashboard delivers insights at every level while maintaining a unified look and feel through shared CSS and theme modules.
+We independently prototyped our ideas and designs, walked through each other’s work to provide feedback, and then merged two Streamlit apps into a single, cohesive dashboard with tabs for Project Overview, KPIs, Visualizations, Statistical Tests, Predictive Model and Glossary. The dashboard features interactive Plotly and Seaborn/Matplotlib charts, customizable sidebar filters, high‑level metric cards and plain language summaries for non‑technical users, and detailed tables and code snippets for technical audiences.
+
 
 
 ## Development Roadmap

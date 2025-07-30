@@ -1,8 +1,10 @@
+# Ummasking Hidden Cyber Threats
+<img src='images/cover.png' alt='Cover image'>
 
 ### Navigation
 * [README](https://github.com/SelinaFischer/unmasking_hidden_cyber_threats_t5/blob/main/README.md)
-* [Raw data](https://github.com/SelinaFischer/unmasking_hidden_cyber_threats_t5/tree/main/data/raw)
 * [ETL pipeline](https://github.com/SelinaFischer/unmasking_hidden_cyber_threats_t5/blob/main/jupyter_notebooks/1.%20etl_data_prep.ipynb)
+* [EDA](https://github.com/SelinaFischer/unmasking_hidden_cyber_threats_t5/blob/main/jupyter_notebooks/2.%20eda_analysis.ipynb)
 * [Hypothesis Validation](https://github.com/SelinaFischer/unmasking_hidden_cyber_threats_t5/blob/main/jupyter_notebooks/3.%20hypothesis_validation.ipynb)
 
 

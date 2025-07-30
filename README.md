@@ -218,7 +218,7 @@ Throughout the project, we applied a structured and disciplined approach to mana
 
 - **Processing**: The dataset was cleaned by checking for null values, removing duplicates and unneccesary columns, converting categorical features, addressing variable imbalance, and applying log transformations to skewed fields.
 
-- **Analysis**: We conducted Exploratory Data Analysis (EDA) to understand feature distributions, detect outliers, and guide the formation of hypotheses related to malicious versus normal network behaviour.
+- **Analysis**: We conducted Exploratory Data Analysis (EDA) to understand feature distributions, detect outliers, correlation heatmap, and guide the formation of hypotheses related to malicious versus normal network behaviour.
 
 - **Interpretation**: Insights were developed through visual sketches, refined using Tableau, and presented in a Streamlit dashboard. Key findings were communicated through storytelling and supported in the final report.
 

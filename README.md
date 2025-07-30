@@ -207,12 +207,14 @@ This project followed a structured, collaborative 4-day plan to investigate hidd
 
 ## High-Level Steps
 
-| **Day**   | **Focus Area**                         | **Key Activities**                                                                                                                                       | **Owner(s)**                          |
-|-----------|----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
-| Day 1     | Problem Framing & Data Prep            | - Defined project objectives and key hypotheses <br> - Assigned team roles <br> - Reviewed and cleaned train/test datasets <br> - Performed initial exploratory data analysis (EDA) and profiling <br> - Set up GitHub repo and Kanban board | Member 1 (Project Management, Repo Setup) <br> Member 2 (ETL, EDA) |
-| Day 2     | Analysis & Hypothesis Testing          | - Conducted descriptive statistics <br> - Ran statistical tests (Mann-Whitney U, Chi-square, and T-test) <br> - Explored patterns in service types, durations, and feature distributions <br> - Initiated Tableau dashboard layout and visual planning | Member 2 (Stats, Visual Exploration, Dashboard Wireframes) <br> Member 1 (Documentation, Coordination) |
-| Day 3     | Predictive Modelling & Dashboard Build | - Built a binary classification model to detect anomalies <br> - Evaluated model using accuracy, precision, recall, and ROC metrics <br> - Implemented Tableau dashboard with filters and interactivity <br> - Summarised findings and insights | Member 2 (Modelling, Dashboard Build) <br> Member 1 (Documentation, QA) |
-| Day 4     | Final Touch & Presentation             | - Polished dashboard visuals and added KPI cards <br> - Drafted business recommendations <br> - Prepared and rehearsed final presentation <br> - Completed README and mapped learning outcomes | Member 1 & Member 2 (Joint effort) |
+## High-Level Steps
+
+| **Day** | **Focus Area**                         | **Key Activities**                                                                                                                                                 |
+|---------|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Day 1   | Problem Framing & Data Prep            | - Defined project objectives and key hypotheses<br>- Assigned team roles<br>- Reviewed & cleaned train/test datasets<br>- Performed initial EDA & profiling<br>- Set up GitHub repo & Kanban board |
+| Day 2   | Analysis & Hypothesis Testing          | - Conducted descriptive statistics<br>- Ran Mann‑Whitney U, Chi‑square & t‑tests<br>- Explored patterns in service types, durations & feature distributions<br>- Drafted Streamlit dashboard wireframes |
+| Day 3   | Predictive Modelling & Dashboard Build | - Built binary classification model to detect anomalies<br>- Evaluated accuracy & precision<br>- Developed interactive Streamlit dashboard<br>- Summarised key findings & insights |
+| Day 4   | Final Touch & Presentation             | - Rehearsed final presentation                                                                                                                                    |
 
 
 <br>

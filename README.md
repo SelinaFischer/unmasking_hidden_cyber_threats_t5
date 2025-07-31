@@ -518,7 +518,6 @@ https://cyberninjas.streamlit.app/
 
 
 ## Main Data Analysis Libraries
-* Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
 
 Throughout this project, we used a combination of Python libraries for data cleaning, analysis, statistical testing, and visualisation. Below is a summary of the core libraries used and how we applied them:
 

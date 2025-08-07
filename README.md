@@ -8,8 +8,10 @@
 * [EDA](https://github.com/SelinaFischer/unmasking_hidden_cyber_threats_t5/blob/main/jupyter_notebooks/2.%20eda_analysis.ipynb)
 * [Hypothesis Validation](https://github.com/SelinaFischer/unmasking_hidden_cyber_threats_t5/blob/main/jupyter_notebooks/3.%20statistical_analysis.ipynb)
 
+* [Project Board](https://github.com/users/SelinaFischer/projects/12)
 
 
+<br>
 
 
 ## Introduction:
